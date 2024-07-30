@@ -1,7 +1,7 @@
 dataset: "VCTK"
 
 path:
-  corpus_path: "/kaggle/working/DEX-TTS/DEX-TTS/vctk/wav48"
+  corpus_path: "/kaggle/input/vctk-dataset/VCTK-Corpus/wav48"
   lexicon_path: "/kaggle/working/DEX-TTS/DEX-TTS/preprocess/lexicon/new_librispeech-lexicon.txt"
   raw_path: "/kaggle/working/DEX-TTS/DEX-TTS/vctk/raw_data"
   preprocessed_path: "/kaggle/working/DEX-TTS/DEX-TTS/preprocessed_data"
