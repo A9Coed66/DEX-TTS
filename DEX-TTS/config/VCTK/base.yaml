@@ -86,8 +86,8 @@ model:
 train:
   epoch:      1000
   batch_size: 32
-  save_epoch: 200
-  syn_every:  200
+  save_epoch: 4
+  syn_every:  4
   fix_len:    2
   out_size:   True
   lr:         1e-4
