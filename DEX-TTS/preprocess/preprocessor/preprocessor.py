@@ -46,7 +46,7 @@ class Preprocessor:
         print("Processing Data ...")
         out_list = []
         speakers = {}
-        for i, speaker in enumerate(tqdm(os.listdir(self.in_dir))):
+        for i, speaker in enumerate(tqdm(os.listdir(self.in_dir)), leave=False):
             speakers[speaker] = i
             for wav_name in tqdm(os.listdir(os.path.join(self.in_dir, speaker)), leave=False):
                 if ".wav" not in wav_name:
