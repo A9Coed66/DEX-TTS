@@ -6,7 +6,7 @@ def get_config():
     
     parser.add_argument('action', type=str, default='train', help='Action') # train / test / evaluate
     parser.add_argument('--config', default='./config/VCTK/base.yaml', help='config yaml file')
-    parser.add_argument('--num_worker', type=int, default=0, help='Num workers')
+    parser.add_argument('--num_worker', type=int, default=4, help='Num workers')
     parser.add_argument('--seed', type=int, default=100, help='seed number')
     parser.add_argument('--n_timesteps', type=int, default=50, help='T')
     parser.add_argument('--device', type=str, default='cuda:0', help='Cuda device')
