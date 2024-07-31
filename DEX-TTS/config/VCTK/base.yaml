@@ -97,7 +97,7 @@ train:
   ref_type:   'mel'
   sty_type:   'mel'
   aug_type:   ['N', 'N', 'N']   # FTS | F | N
-  unseen_spk: [18, 22, 44, 50, 55, 58, 64, 90, 93, 98]
+  unseen_spk: [1, 2]
 
 test:
   ema:          False
