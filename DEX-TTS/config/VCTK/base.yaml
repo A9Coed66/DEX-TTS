@@ -84,7 +84,7 @@ model:
     mask_type:       'time_random'  # random | freq | time 
 
 train:
-  epoch:      1000
+  epoch:      20
   batch_size: 32
   save_epoch: 4
   syn_every:  4
