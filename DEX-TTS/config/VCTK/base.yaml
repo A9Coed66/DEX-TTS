@@ -5,11 +5,13 @@ dataset:         'VCTK'
 vocoder:         'hifigan'   ## vocoder & vocoder path ['hifigan', 'bigvgan']
 
 path:
-  train_path:     'filelists/VCTK/train_unseen.txt'
-  val_path:       'filelists/VCTK/valid.txt'
-  test_path:      'filelists/VCTK/test.txt'
-  cmu_path:       'resources/cmu_dictionary'
-  vocoder_path:   'hifigan/weights'          #  ['hifigan/weights', 'bigvgan/bigvgan_22khz_80band', 'bigvgan/bigvgan_base_22khz_80band']
+## TODO: change the path to true
+  pretrain_model_path:  'filelists/VCTK/model-val-best.pth'
+  train_path:           'filelists/VCTK/train_unseen.txt'
+  val_path:             'filelists/VCTK/valid.txt'
+  test_path:            'filelists/VCTK/test.txt'
+  cmu_path:             'resources/cmu_dictionary'
+  vocoder_path:         'hifigan/weights'          #  ['hifigan/weights', 'bigvgan/bigvgan_22khz_80band', 'bigvgan/bigvgan_base_22khz_80band']
 
 preprocess:
   sample_rate: 22050
