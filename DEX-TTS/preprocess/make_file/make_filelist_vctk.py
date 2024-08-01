@@ -92,7 +92,7 @@ def main(cfg):
     print('Number of speakers:', len(spk_list))
     spk_dict = {k:v for v,k in enumerate(spk_list)}
     print(spk_dict)
-    unseen_spk   = sorted(random.sample(range(len(spk_dict)), k=2))
+    unseen_spk   = sorted(random.sample(range(len(spk_dict)), k=5))
     print('Unseen speaker:', unseen_spk)
     
     
