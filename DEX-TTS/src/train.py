@@ -68,7 +68,7 @@ class Trainer:
         self.cfg       = cfg
         self.model = DeXTTS(cfg.model).to(cfg.device)
         # Load pretrain model if specified in the config
-        if cfg.path.pretrain_model_path:
+        if os.path.exists(cfg.path.pretrain_model_path):
             checkpoint = torch.load(cfg.path.pretrain_model_path, map_location=cfg.device)
             self.model.load_state_dict(checkpoint['state_dict'])
             print('Pretrained model loaded successfully.')
