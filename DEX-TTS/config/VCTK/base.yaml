@@ -6,7 +6,7 @@ vocoder:         'hifigan'   ## vocoder & vocoder path ['hifigan', 'bigvgan']
 
 path:
 ## TODO: change the path to true
-  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/2/model-val-best (4).pth'
+  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/3/model-val-best (5).pth'
   train_path:           'filelists/VCTK/train_unseen.txt'
   val_path:             'filelists/VCTK/valid.txt'
   test_path:            'filelists/VCTK/test.txt'
@@ -92,7 +92,7 @@ train:
   syn_every:  20
   fix_len:    2
   out_size:   True
-  lr:         5e-4
+  lr:         2e-4
   max_grad:   1
   amp:        True
   mask_ratio: 0   # 0.1 | 0.3 | 0.5 | 0.7
