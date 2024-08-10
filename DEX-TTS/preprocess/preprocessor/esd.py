@@ -91,4 +91,4 @@ def make_meta_dict(config):
                 key_name = base_name.replace(base_speaker+'_', '') # 0011_01234 -> 01234
                 meta_dict[key_name] = [text, emotion]              # 01234: [text, emotion]
 
-    np.save(f'/kaggle/working/esd-raw-data/esd/raw_data/meta_dict.npy')
+    np.save(f'/kaggle/working/esd-raw-data/esd/raw_data/meta_dict.npy',meta_dict)
