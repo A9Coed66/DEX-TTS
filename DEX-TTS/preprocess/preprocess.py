@@ -13,7 +13,7 @@ def main(config):
         vctk.prepare_align(config)
     if "ESD" in config["dataset"]:
         esd.prepare_align(config)
-        esd.make_meta_dict(config)
+        # esd.make_meta_dict(config)
 
     preprocessor = Preprocessor(config)
     preprocessor.build_from_path()
