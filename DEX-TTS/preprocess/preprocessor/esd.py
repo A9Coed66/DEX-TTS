@@ -41,7 +41,9 @@ def prepare_align(config):
     base_text_path = os.path.join(in_dir, base_speaker, "{}.txt".format(base_speaker))
     meta_dict = {}
     with open(base_text_path, encoding='utf-8') as file:
+        # open txt file for each speaker
         for line in file:
+            # load speaker information: name, text, emotion
             if len(line) > 2:
                 base_name, text, emotion = line.strip('\n').split('\t')
                 text      = _clean_text(text, cleaners)
@@ -49,13 +51,13 @@ def prepare_align(config):
                 meta_dict[key_name] = [text, emotion] # 01234: [text, emotion]
 
     for speaker in tqdm(sorted(os.listdir(in_dir))):
-        
+        # for each speaker in in_dir
 
         if '00' not in speaker:
             continue
         
         os.makedirs(os.path.join(out_dir, speaker), exist_ok=True)   
-        # # wav file list
+        # make directory for each speaker in out_dir => out_dir when create must be in working space
         
         wav_path_list = find_files(os.path.join(in_dir, speaker))
         for wav_path in wav_path_list:
@@ -90,5 +92,5 @@ def make_meta_dict(config):
                 text      = _clean_text(text, cleaners)
                 key_name = base_name.replace(base_speaker+'_', '') # 0011_01234 -> 01234
                 meta_dict[key_name] = [text, emotion]              # 01234: [text, emotion]
-
+    os.makedirs('/kaggle/working/esd-raw-data/esd/raw_data', exist_ok=True)   
     np.save(f'/kaggle/working/esd-raw-data/esd/raw_data/meta_dict.npy',meta_dict)
