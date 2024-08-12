@@ -85,7 +85,7 @@ def main(cfg):
     write_path = f'./filelists/{cfg.dataset}'
     wav_path   = cfg.path.raw_path
     mel_path   = f'{cfg.path.preprocessed_path}/mel'
-    meta_path  = f'{cfg.path.raw_path}/meta_dict.npy'.replace('/raw_data', '')
+    meta_path  = '/kaggle/input/esd-meta-dict/meta_dict.npy'
     MakeDir(write_path)
 
     spk_list = sorted(os.listdir(wav_path))
