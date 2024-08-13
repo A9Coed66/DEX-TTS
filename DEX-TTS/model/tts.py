@@ -98,35 +98,18 @@ class DeXTTS(nn.Module):
 
         # Use MAS to find most likely alignment `attn` between text and mel-spectrogram
         with torch.no_grad(): 
-            # const       = -0.5 * math.log(2 * math.pi) * self.n_feats
-            # factor      = -0.5 * torch.ones(mu_x.shape, dtype=mu_x.dtype, device=mu_x.device)
-            # y_square    = torch.matmul(factor.transpose(1, 2), y ** 2)
-            # y_mu_double = torch.matmul(2.0 * (factor * mu_x).transpose(1, 2), y)
-            # mu_square   = torch.sum(factor * (mu_x ** 2), 1).unsqueeze(-1)
-            # log_prior   = y_square - y_mu_double + mu_square + const
+            const       = -0.5 * math.log(2 * math.pi) * self.n_feats
+            factor      = -0.5 * torch.ones(mu_x.shape, dtype=mu_x.dtype, device=mu_x.device)
+            y_square    = torch.matmul(factor.transpose(1, 2), y ** 2)
+            y_mu_double = torch.matmul(2.0 * (factor * mu_x).transpose(1, 2), y)
+            mu_square   = torch.sum(factor * (mu_x ** 2), 1).unsqueeze(-1)
+            log_prior   = y_square - y_mu_double + mu_square + const
 
-            s_p_sq_r = torch.ones_like(mu_x) # [b, d, t]
-            neg_cent1 = torch.sum(
-                -0.5 * math.log(2 * math.pi)- torch.zeros_like(mu_x), [1], keepdim=True
-            )
-            neg_cent2 = torch.einsum("bdt, bds -> bts", -0.5 * (y**2), s_p_sq_r)
-            neg_cent3 = torch.einsum("bdt, bds -> bts", y, (mu_x * s_p_sq_r))
-            neg_cent4 = torch.sum(
-                -0.5 * (mu_x**2) * s_p_sq_r, [1], keepdim=True
-            )  
-            neg_cent = neg_cent1 + neg_cent2 + neg_cent3 + neg_cent4
-            
-            attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)
-            
-            attn = (
-                 monotonic_align.maximum_path(neg_cent, attn_mask.squeeze(1)).unsqueeze(1).detach()
-            )
-            # attn = monotonic_align.maximum_path(log_prior, attn_mask.squeeze(1))
-            # attn = attn.detach()
+            attn = monotonic_align.maximum_path(log_prior, attn_mask.squeeze(1))
+            attn = attn.detach()
 
         # Compute loss between predicted log-scaled durations and those obtained from MAS
-        logw_    = torch.log(1e-8 + attn.sum(2)) * x_mask
-        # logw_    = torch.log(1e-8 + torch.sum(attn.unsqueeze(1), -1)) * x_mask
+        logw_    = torch.log(1e-8 + torch.sum(attn.unsqueeze(1), -1)) * x_mask
         dur_loss = duration_loss(logw, logw_, x_lengths)
 
         # Cut a small segment of mel-spectrogram in order to increase batch size
