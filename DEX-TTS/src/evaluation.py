@@ -144,7 +144,7 @@ class Tester:
 
             syn_save_path  = f'{self.cfg.sample_path}/syn/spk_{spk}_{i}_{emotion}.wav'
             wav_save_path  = f'{self.cfg.sample_path}/ref/spk_{spk}_{i}_{emotion}.wav'
-
+            print(f"{text}: file saved at {syn_save_path}")
             write(syn_save_path, 22050, audio)
             shutil.copyfile(wav_path, wav_save_path)
 

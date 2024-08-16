@@ -147,7 +147,8 @@ class DeXTTS(nn.Module):
         diff_loss = self.decoder(y, y_mask, mu_y, ref_skips, ref_lengths, sty_dec, sty_lengths, spk=spk, infer=False, mask_ratio=mask_ratio)
         
         # Compute loss between aligned encoder outputs and mel-spectrogram
-        prior_loss = torch.sum(0.5 * ((y - mu_y) ** 2 + math.log(2 * math.pi)) * y_mask)
+        # prior_loss = torch.sum(0.5 * ((y - mu_y) ** 2 + math.log(2 * math.pi)) * y_mask)
+        prior_loss = torch.sum(0.5 * ((y - mu_y) ** 2))
         prior_loss = prior_loss / (torch.sum(y_mask) * self.n_feats)
         
         return dur_loss, prior_loss, diff_loss, vq_loss

@@ -5,7 +5,7 @@ dataset:         'ESD'
 vocoder:         'hifigan'   ## vocoder & vocoder path ['hifigan', 'bigvgan']
 
 path:
-  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/6/model-val-best.pth'
+  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/7/model-val-best (1).pth'
   train_path:     'filelists/ESD/train_unseen.txt'
   val_path:       'filelists/ESD/valid.txt'
   test_path:      'filelists/ESD/test.txt'

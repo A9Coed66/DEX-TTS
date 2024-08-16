@@ -64,6 +64,7 @@ class ConvReluNorm(nn.Module):
 
 
 class DurationPredictor(nn.Module):
+    """ predicts the duration mapping htext to mel frames"""
     def __init__(self, in_channels, filter_channels, kernel_size, p_dropout):
         super(DurationPredictor, self).__init__()
         self.in_channels = in_channels
