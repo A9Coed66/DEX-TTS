@@ -85,13 +85,13 @@ model:
     mask_type:       'time_random'  # random | freq | time 
 
 train:
-  epoch:      30
+  epoch:      40
   batch_size: 32
-  save_epoch: 15
-  syn_every:  30
+  save_epoch: 40
+  syn_every:  40
   fix_len:    2
   out_size:   True
-  lr:         1e-4
+  lr:         2e-5
   max_grad:   1
   amp:        True
   mask_ratio: 0   # 0.1 | 0.3 | 0.5 | 0.7
