@@ -4,7 +4,7 @@ path:
   corpus_path: "/kaggle/input/esd-eng/Emotion Speech Dataset"
   lexicon_path: "/kaggle/working/DEX-TTS/DEX-TTS/preprocess/lexicon/new_librispeech-lexicon.txt"
   raw_path: "/kaggle/working/DEX-TTS/DEX-TTS/raw_data"
-  preprocessed_path: "/kaggle/input/esd-preprocessed-data/preprocessed_data"
+  preprocessed_path: "/kaggle/working/esd-preprocessed-data/preprocessed_data"
 
 preprocessing:
   text:
