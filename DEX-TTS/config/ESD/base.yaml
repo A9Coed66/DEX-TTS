@@ -5,7 +5,7 @@ dataset:         'ESD'
 vocoder:         'hifigan'   ## vocoder & vocoder path ['hifigan', 'bigvgan']
 
 path:
-  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/11/model-val-best (6).pth'
+  pretrain_model_path:  '/kaggle/input/dex-tts/pytorch/default/12/model-val-best (7).pth'
   train_path:     'filelists/ESD/train_unseen.txt'
   val_path:       'filelists/ESD/valid.txt'
   test_path:      'filelists/ESD/test.txt'
@@ -85,13 +85,13 @@ model:
     mask_type:       'time_random'  # random | freq | time 
 
 train:
-  epoch:      40
+  epoch:      80
   batch_size: 32
-  save_epoch: 40
-  syn_every:  40
+  save_epoch: 80
+  syn_every:  80
   fix_len:    2
   out_size:   True
-  lr:         2e-5
+  lr:         1e-5
   max_grad:   1
   amp:        True
   mask_ratio: 0   # 0.1 | 0.3 | 0.5 | 0.7
